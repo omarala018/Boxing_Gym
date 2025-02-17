@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Booking Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link 
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  >
+  
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    html {
+      background: url('img/center-logo.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+    body {
+      background: transparent !important;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="container-fluid py-3 bg-light d-flex align-items-center">
+    <div class="flex-grow-1">
+      <a href="index.html">
+        <img src="img/logo.png" alt="Logo" class="logo-img" />
+      </a>
+    </div>
+    <div class="flex-grow-1 text-center fw-bold fs-1 mb-0">
+      Ottawa Fighters
+    </div>
+    <div class="flex-grow-1">
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav class="side-nav">
+    <ul class="nav flex-column text-end">
+      <li class="nav-item"><a class="nav-link" href="index.html">Home Page</a></li>
+      <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="location.html">Location</a></li>
+      <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+      <li class="nav-item"><a class="nav-link" href="Cart.html">Cart</a></li>
+    </ul>
+  </nav>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="container my-5 p-4 bg-white bg-opacity-75 rounded">
+    <!-- Les informations du coach seront insérées ici -->
+    <h1 id="trainerName" class="mb-3">Coach Name</h1>
+    <img id="trainerPhoto" src="" alt="Photo du coach" class="img-fluid mb-3" style="max-width:200px;">
+    <p id="trainerAge" class="mb-1"></p>
+    <p id="trainerBio" class="mb-3"></p>
+    <p id="trainerPrice" class="mb-1"></p>
+    <p id="trainerReview" class="mb-1"></p>
+    <p id="trainerAvailability" class="mb-3"></p>
+
+    <button 
+      class="btn btn-primary"
+      onclick="window.location.href='infoclient.html'">
+      Book now
+    </button>
+  </main>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>

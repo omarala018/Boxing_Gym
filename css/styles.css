@@ -1,0 +1,149 @@
+/* ======= RESET & BASE ======= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  /* ======= HEADER ======= */
+  .logo-img {
+    height: 60px;
+    width: auto;
+  }
+  
+  /* ======= NAVIGATION ======= */
+  .side-nav {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    margin-right: 1rem;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .side-nav .nav-link {
+    color: #444;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    transition: color 0.3s;
+  }
+  
+  .side-nav .nav-link:hover {
+    color: #007bff;
+  }
+  
+  .side-nav .nav-link.active {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  /* ======= HERO SECTION ======= */
+  .hero-section {
+    height: 100vh;
+    width: 100%;
+    background: url('../img/center-logo.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4); 
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 1rem;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    margin-bottom: 1rem;
+  }
+
+  .bold-text {
+    font-weight: bold;
+  }
+  
+  /* ======= CARDS & CONTAINERS ======= */
+  .card {
+    background-color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  /* ======= FORM ELEMENTS ======= */
+  .form-control, .form-select {
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    transition: border-color 0.3s;
+  }
+  
+  .form-control:focus, .form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+  }
+  
+  /* ======= BUTTONS ======= */
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .btn-success:hover {
+    background-color: #1e7e34;
+    border-color: #1e7e34;
+  }
+  
+  /* ======= MISC ======= */
+  .alert {
+    border-radius: 0.25rem;
+  }
+  
+  .fs-5 {
+    font-size: 1.25rem;
+  }
+  

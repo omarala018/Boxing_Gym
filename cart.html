@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Bootstrap CSS (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body {
+      background-color: #f0f2f5;
+    }
+    .side-nav {
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 0.25rem;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .side-nav .nav-link {
+      color: #333;
+    }
+    .side-nav .nav-link.active {
+      font-weight: bold;
+      color: #0d6efd;
+    }
+    .side-nav .nav-link:hover {
+      color: #0d6efd;
+    }
+    .quantity-input {
+      width: 60px;
+    }
+  </style>
+  
+  <style>
+    html {
+      background: url('img/center-logo.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+    body {
+      background: transparent !important;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="container-fluid py-3 bg-light d-flex align-items-center">
+    <div class="flex-grow-1">
+      <a href="index.html">
+        <img src="img/logo.png" alt="Logo" class="logo-img" />
+      </a>
+    </div>
+    <div class="flex-grow-1 text-center fw-bold fs-1 mb-0">
+      Ottawa Fighters
+    </div>
+    <div class="flex-grow-1">
+
+    </div>
+  </header>
+  
+  <!-- NAVIGATION -->
+  <nav class="side-nav position-absolute top-50 end-0 translate-middle-y me-3">
+    <ul class="nav flex-column text-end">
+      <li class="nav-item"><a class="nav-link" href="index.html">Home Page</a></li>
+      <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="location.html">Location</a></li>
+      <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+      <li class="nav-item"><a class="nav-link active" href="cart.html">Cart</a></li>
+    </ul>
+  </nav>
+  
+  <!-- CONTENU PRINCIPAL -->
+  <main class="container my-5 p-4 bg-white bg-opacity-75 rounded" style="max-width: 1200px;">
+    <h2 class="mb-4">Your Cart</h2>
+    <div id="cartItems"></div>
+    <div class="mt-4 text-end">
+      <h4>Total: $<span id="totalAmount">0</span></h4>
+      <button class="btn btn-success btn-lg" id="payButton">Pay</button>
+    </div>
+  </main>
+  
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Fonction pour récupérer le panier depuis localStorage
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    }
+    
+    // Fonction pour sauvegarder le panier dans localStorage
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    
+    // Met à jour le compteur de panier dans le menu
+    function updateCartCount() {
+      const cart = getCart();
+      const count = cart.reduce((acc, item) => acc + item.quantity, 0);
+      const cartCountElement = document.getElementById('cartCount');
+      if (cartCountElement) {
+        cartCountElement.textContent = count;
+      }
+    }
+    
+    // Fonction pour afficher le panier
+    function displayCart() {
+      const cart = getCart();
+      const cartItemsContainer = document.getElementById('cartItems');
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
+      
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+      } else {
+        cart.forEach((item, index) => {
+          total += item.price * item.quantity;
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'row mb-3 align-items-center';
+          itemDiv.innerHTML = `
+            <div class="col-3">
+              <img src="${item.img}" alt="${item.name}" class="img-fluid">
+            </div>
+            <div class="col-3">
+              <h5>${item.name}</h5>
+              <p>Price: $${item.price}</p>
+            </div>
+            <div class="col-2">
+              <input type="number" min="1" value="${item.quantity}" class="form-control quantity-input" data-index="${index}">
+            </div>
+            <div class="col-2">
+              <p>$${(item.price * item.quantity).toFixed(2)}</p>
+            </div>
+            <div class="col-2">
+              <button class="btn btn-danger btn-sm delete-item" data-index="${index}">Supprimer</button>
+            </div>
+          `;
+          cartItemsContainer.appendChild(itemDiv);
+        });
+      }
+      
+      document.getElementById('totalAmount').textContent = total.toFixed(2);
+      
+      // Attacher les événements pour les boutons de suppression
+      document.querySelectorAll('.delete-item').forEach(button => {
+        button.addEventListener('click', function() {
+          const index = button.getAttribute('data-index');
+          let cart = getCart();
+          cart.splice(index, 1);
+          saveCart(cart);
+          displayCart();
+          updateCartCount();
+        });
+      });
+    }
+    
+    // Gestion de la modification de la quantité
+    document.addEventListener('input', function(e) {
+      if (e.target && e.target.classList.contains('quantity-input')) {
+        const index = e.target.getAttribute('data-index');
+        let newQty = parseInt(e.target.value, 10);
+        if (isNaN(newQty) || newQty < 1) {
+          newQty = 1;
+          e.target.value = newQty;
+        }
+        const cart = getCart();
+        cart[index].quantity = newQty;
+        saveCart(cart);
+        displayCart();
+        updateCartCount();
+      }
+    });
+    
+    displayCart();
+    
+    // Action sur le bouton "Pay"
+    document.getElementById('payButton').addEventListener('click', function() {
+      if (getCart().length === 0) {
+        alert("Your cart is empty. Please select some products.");
+      } else {
+        window.location.href = 'infoclient2.html';
+      }
+    });
+  </script>
+  <script src="js/script.js"></script>
+</body>
+</html>

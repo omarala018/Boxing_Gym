@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Services Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Lien vers fichier CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    html {
+      background: url('img/center-logo.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+    body {
+      background: transparent;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER-->
+  <header class="container-fluid py-3 bg-light d-flex align-items-center">
+    <div class="flex-grow-1">
+      <a href="index.html">
+        <img src="img/logo.png" alt="Logo" class="logo-img" />
+      </a>
+    </div>
+    <div class="flex-grow-1 text-center fw-bold fs-1 mb-0">
+      Ottawa Fighters
+    </div>
+    <div class="flex-grow-1">
+    </div>
+  </header>
+
+  <!-- NAVIGATION-->
+  <nav class="side-nav">
+    <ul class="nav flex-column text-end">
+      <li class="nav-item"><a class="nav-link" href="index.html">Home Page</a></li>
+      <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="location.html">Location</a></li>
+      <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="cart.html">Cart <span id="cartCount"></span></a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="container my-5 p-4 bg-white bg-opacity-75 rounded" style="width: fit-content; margin: auto;">
+    <!-- SECTION PERSONAL TRAINING -->
+    <div class="row mb-5">
+      <div class="col-12">
+        <h2 class="mb-4 fw-bold">Personal Training</h2>
+      </div>
+
+      <!-- Trainer 1 : Islam -->
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <div class="card">
+          <div class="row g-0">
+            <div class="col-auto">
+              <img src="img/islam.jpeg" alt="Trainer Islam" class="img-fluid" style="width: 120px; height: auto;">
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <h5 class="card-title">Islam Makhachev</h5>
+                <p class="mb-1">Age: 31</p>
+                <p class="mb-1">Strengths: Wrestling, Grappling</p>
+                <p class="mb-1">Price: $60/h</p>
+                <p class="mb-1">Review: 4.8/5</p>
+                <!-- Lien vers booking.html avec paramètre pour Islam -->
+                <a href="booking.html?trainer=islam" class="btn btn-primary mt-2">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trainer 2 : Khabib -->
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <div class="card">
+          <div class="row g-0">
+            <div class="col-auto">
+              <img src="img/khabib.jpeg" alt="Trainer Khabib" class="img-fluid" style="width: 120px; height: auto;">
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <h5 class="card-title">Khabib Nurmagomedov</h5>
+                <p class="mb-1">Age: 34</p>
+                <p class="mb-1">Strengths: Wrestling, Grappling</p>
+                <p class="mb-1">Price: $80/h</p>
+                <p class="mb-1">Review: 5/5</p>
+                <!-- Lien vers booking.html avec paramètre pour Khabib -->
+                <a href="booking.html?trainer=khabib" class="btn btn-primary mt-2">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fin Personal Training -->
+    </div>
+
+    <!-- SECTION EQUIPMENTS -->
+    <div class="row">
+      <div class="col-12">
+        <h2 class="mb-4 fw-bold">Equipments</h2>
+      </div>
+
+      <!-- Equipment 1 : Boxing Gloves -->
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="card">
+          <img src="img/boxing gloves.jpeg" alt="Boxing Gloves" class="card-img-top" style="height: 180px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Boxing Gloves</h5>
+            <p class="mb-1">$120</p>
+            <button class="btn btn-primary add-to-cart" data-id="boxing_gloves" data-name="Boxing Gloves" data-price="120" data-img="img/boxing gloves.jpeg">buy</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Equipment 2 : Hand Wraps -->
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="card">
+          <img src="img/hand wraps.jpeg" alt="Hand Wraps" class="card-img-top" style="height: 180px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Hand Wraps</h5>
+            <p class="mb-1">$15</p>
+            <button class="btn btn-primary add-to-cart" data-id="hand_wraps" data-name="Hand Wraps" data-price="15" data-img="img/hand wraps.jpeg">buy</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Equipment 3 : Mouthguard -->
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="card">
+          <img src="img/mouthguard.jpeg" alt="Mouthguard" class="card-img-top" style="height: 180px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Mouthguard</h5>
+            <p class="mb-1">$20</p>
+            <button class="btn btn-primary add-to-cart" data-id="mouthguard" data-name="Mouthguard" data-price="20" data-img="img/mouthguard.jpeg">buy</button>
+          </div>
+        </div>
+      </div>
+      <!-- Fin Equipments -->
+    </div>
+  </main>
+
+  <!-- Scripts Bootstrap + JS perso -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Fonction pour récupérer le panier depuis localStorage
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    }
+    
+    // Fonction pour sauvegarder le panier dans localStorage
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    
+    // Mettre à jour le compteur dans le menu Cart si un élément avec id "cartCount" existe
+    function updateCartCount() {
+      const cart = getCart();
+      const count = cart.reduce((acc, item) => acc + item.quantity, 0);
+      const cartCountElement = document.getElementById('cartCount');
+      if (cartCountElement) {
+        cartCountElement.textContent = count;
+      }
+    }
+    
+    // Ajouter un événement pour tous les boutons "Acheter"
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', function() {
+        const id = this.getAttribute('data-id');
+        const name = this.getAttribute('data-name');
+        const price = parseFloat(this.getAttribute('data-price'));
+        const img = this.getAttribute('data-img');
+        
+        let cart = getCart();
+        const existingItem = cart.find(item => item.id === id);
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ id, name, price, img, quantity: 1 });
+        }
+        saveCart(cart);
+        updateCartCount();
+        alert(name + " added to cart!");
+      });
+    });
+    
+    // Mise à jour initiale du compteur
+    updateCartCount();
+  </script>
+  <script src="js/script.js"></script>
+</body>
+</html>
